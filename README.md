@@ -1,7 +1,7 @@
 # Next-Salah
 A python program to print out the next salah comming and the remaining time to it.
 
-I have [Salah tool](https://pypi.org/project/salat/) used to calculate the salat times using the equation of time and elevation angle of the sun, so a big thank to these brilliant guys.
+I have used [Salah tool](https://pypi.org/project/salat/) to calculate the salat times using the equation of time and elevation angle of the sun, so a big thank to these brilliant guys.
 
 # Notes
 
