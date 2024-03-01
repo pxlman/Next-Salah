@@ -1,3 +1,4 @@
+#!/sbin/python
 import salat as st
 import datetime as dt
 from datetime import datetime
@@ -93,8 +94,10 @@ def nearestSalah(allTimes):
 times = allSalahTimes()
 nearestSalahArr = nearestSalah(times)
 nearestSalahName = nearestSalahArr[0].capitalize()
-nearestSalahTime = str(nearestSalahArr[1])
-output = nearestSalahName + ": " + nearestSalahTime
+nearestSalahMin = int(nearestSalahArr[1])
+nearestSalahTime = dt.time(minute=nearestSalahMin)
+nearestSalahTimeStr = nearestSalahTime.strftime("%H:%M")
+output = nearestSalahName + "-> " + nearestSalahTimeStr
 
 print(output)
 # print(nearestSalah(times))
