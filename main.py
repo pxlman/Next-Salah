@@ -95,7 +95,7 @@ times = allSalahTimes()
 nearestSalahArr = nearestSalah(times)
 nearestSalahName = nearestSalahArr[0].capitalize()
 nearestSalahMin = int(nearestSalahArr[1])
-nearestSalahTime = dt.time(minute=nearestSalahMin)
+nearestSalahTime = dt.time(hour=nearestSalahMin // 60,minute=nearestSalahMin % 60)
 nearestSalahTimeStr = nearestSalahTime.strftime("%H:%M")
 output = nearestSalahName + "-> " + nearestSalahTimeStr
 
