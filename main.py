@@ -86,7 +86,7 @@ def nearestSalah(allTimes):
 	# 			An array [next salah name, time remain, time, sign]
 	now = datetime.now()
 	for name,time in allTimes.items():
-		if subTime(now,time) > (-5 * 60):
+		if subTime(now,time) > (-20 * 60):
 			sign = " "
 			if subTime(now,time) > 0:
 				sign = "-"
@@ -101,8 +101,13 @@ times = allSalahTimes()
 nearestSalahArr = nearestSalah(times)
 nearestSalahName = nearestSalahArr[0].capitalize()
 nearestSalahMin = int(nearestSalahArr[1])
-nearestSalahTime = dt.time(hour=nearestSalahMin // 60,minute=nearestSalahMin % 60)
-nearestSalahTimeStr = nearestSalahTime.strftime("%H:%M")
+if nearestSalahArr[3] == "+":
+    nearestSalahTime = dt.time(second=(nearestSalahMin*60) % 60, minute=nearestSalahMin % 60)
+    nearestSalahTimeStr = nearestSalahTime.strftime("%M:%S")
+else:
+    nearestSalahTime = dt.time(hour=nearestSalahMin // 60, minute=nearestSalahMin % 60)
+    nearestSalahTimeStr = nearestSalahTime.strftime("%H:%M")
+
 # output = nearestSalahName + ">" + nearestSalahTimeStr
 # You can combine it with 󱠧  for ur polybar config
 output = nearestSalahArr[3] + nearestSalahTimeStr
