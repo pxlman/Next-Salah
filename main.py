@@ -3,6 +3,7 @@ import salat as st
 import datetime as dt
 from datetime import datetime
 import time as timeModule
+import sys
 #date = datetime.today()
 lat = 30
 longg = 31
@@ -82,13 +83,18 @@ def allSalahTimes():
 
 def nearestSalah(allTimes):
 	# Returns:
-	# 			An array [next salah name, time remain]
+	# 			An array [next salah name, time remain, time, sign]
 	now = datetime.now()
 	for name,time in allTimes.items():
-		if subTime(now,time) > 0:
+		if subTime(now,time) > (-5 * 60):
+			sign = " "
+			if subTime(now,time) > 0:
+				sign = "-"
+			else:
+				sign = "+"
 			if name == 'nfajr':
 				name = 'fajr'
-			return [name,int(subTime(now,time) / 60)]
+			return [name,int(subTime(now,time) / 60), time, sign]
 	
 
 times = allSalahTimes()
@@ -97,7 +103,14 @@ nearestSalahName = nearestSalahArr[0].capitalize()
 nearestSalahMin = int(nearestSalahArr[1])
 nearestSalahTime = dt.time(hour=nearestSalahMin // 60,minute=nearestSalahMin % 60)
 nearestSalahTimeStr = nearestSalahTime.strftime("%H:%M")
-output = nearestSalahName + "-> " + nearestSalahTimeStr
+# output = nearestSalahName + ">" + nearestSalahTimeStr
+# You can combine it with 󱠧  for ur polybar config
+output = nearestSalahArr[3] + nearestSalahTimeStr
+try:
+    if sys.argv[1] in "fajr sunrise dhuhr asr maghrib isha":
+        print(times[sys.argv[1]].strftime("%H:%M"))
+except:
+        print(output)
 
-print(output)
+
 # print(nearestSalah(times))
