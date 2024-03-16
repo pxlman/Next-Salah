@@ -63,7 +63,8 @@ def subTime(now, salah):
 	#	salah: The time of the salah to calculate the remaining on it
 	# Returns:
 	#	the difference in seconds
-	return (salah - now).total_seconds()
+	# return (salah - now).total_seconds()
+	return salah - now
 
 def allSalahTimes():
 	# Returns: 
@@ -86,36 +87,33 @@ def nearestSalah(allTimes):
 	# 			An array [next salah name, time remain, time, sign]
 	now = datetime.now()
 	for name,time in allTimes.items():
-		if subTime(now,time) > (-20 * 60):
+		diffS = subTime(now,time).total_seconds()
+		if diffS > (-25 * 60):
 			sign = " "
-			if subTime(now,time) > 0:
+			if diffS > 0:
 				sign = "-"
+				datetimeObj = subTime(now,time) + dt.datetime(2000,1,1,0,0,0,0)
 			else:
 				sign = "+"
+				datetimeObj = dt.datetime(2000,1,1,0,0,0,0) + dt.timedelta(seconds=abs(diffS))
 			if name == 'nfajr':
 				name = 'fajr'
-			return [name,int(subTime(now,time) / 60), time, sign]
+			return [name,datetimeObj, time, sign]
 	
-
 times = allSalahTimes()
 nearestSalahArr = nearestSalah(times)
 nearestSalahName = nearestSalahArr[0].capitalize()
-nearestSalahMin = int(nearestSalahArr[1])
+nearestSalahRemain = nearestSalahArr[1]
 if nearestSalahArr[3] == "+":
-    nearestSalahTime = dt.time(second=(nearestSalahMin*60) % 60, minute=nearestSalahMin % 60)
-    nearestSalahTimeStr = nearestSalahTime.strftime("%M:%S")
+    nearestSalahTimeStr = nearestSalahRemain.strftime("%M:%S")
 else:
-    nearestSalahTime = dt.time(hour=nearestSalahMin // 60, minute=nearestSalahMin % 60)
-    nearestSalahTimeStr = nearestSalahTime.strftime("%H:%M")
+    nearestSalahTimeStr = nearestSalahRemain.strftime("%H:%M")
 
-# output = nearestSalahName + ">" + nearestSalahTimeStr
 # You can combine it with 󱠧  for ur polybar config
-output = nearestSalahArr[3] + nearestSalahTimeStr
+sign = nearestSalahArr[3]
+output = sign + nearestSalahTimeStr
 try:
-    if sys.argv[1] in "fajr sunrise dhuhr asr maghrib isha":
+    if sys.argv[1] in ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"]:
         print(times[sys.argv[1]].strftime("%H:%M"))
 except:
-        print(output)
-
-
-# print(nearestSalah(times))
+        print(sign + nearestSalahTimeStr)
