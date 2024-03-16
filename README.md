@@ -21,3 +21,8 @@ sunrise: if u want to count duha
 timeDiff: time after/before GMT time
 calcMethod: one of these (ISNA,EGYPT,JAFARI,KARACHI,MAKKA)
 asrMethod: one of these (STANDARD,HANAFI)
+
+# Arguments
+Without any argument it will print out the time remain/after the nearest salah till 20min after the azan
+
+But u can also choose a specific salah time by typing it (fajr,sunrise,asr,maghrib,isha)
