@@ -93,11 +93,14 @@ def nearestSalah(allTimes):
 			if diffS > 0:
 				sign = "-"
 				datetimeObj = subTime(now,time) + dt.datetime(2000,1,1,0,0,0,0)
-			else:
+			elif diffS < 0:
 				sign = "+"
 				datetimeObj = dt.datetime(2000,1,1,0,0,0,0) + dt.timedelta(seconds=abs(diffS))
+			else:
+				sign = " "
+				datetimeObj = dt.datetime(2000,1,1,0,0,0,0) + dt.timedelta(seconds=abs(diffS))
 			if name == 'nfajr':
-				name = 'fajr'
+					name = 'fajr'
 			return [name,datetimeObj, time, sign]
 	
 times = allSalahTimes()
@@ -111,7 +114,11 @@ else:
 
 # You can combine it with 󱠧  for ur polybar config
 sign = nearestSalahArr[3]
-output = sign + nearestSalahTimeStr
+if sign == " ":
+	output = "It's " + nearestSalahName + "!"
+else:
+	output = sign + nearestSalahTimeStr
+
 try:
     if sys.argv[1] in ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"]:
         print(times[sys.argv[1]].strftime("%H:%M"))
