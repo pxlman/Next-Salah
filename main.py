@@ -8,7 +8,7 @@ import sys
 lat = 30
 longg = 31
 sunrise = True
-timeDiff = 2
+timeDiff = 3 # GMT+x
 calcMethod = st.CalculationMethod.EGYPT
 asrMethod = st.AsrMethod.STANDARD
 
@@ -71,7 +71,7 @@ def allSalahTimes():
 	# 			dictionary of today's prayer times in a dictionary
 	# 			and adds item "nfajr": next Fajr time
 	today = datetime.today()
-	tomorrow = dt.date(today.year,today.month,today.day+1)
+	tomorrow = today + dt.timedelta(days = 1)
 	todayTimes = getTimeArr(today)
 	nextFajr = getTimeArr(tomorrow)['fajr']
 	now = datetime.now()
