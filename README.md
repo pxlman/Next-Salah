@@ -26,3 +26,5 @@ asrMethod: one of these (STANDARD,HANAFI)
 Without any argument it will print out the time remain/after the nearest salah till 20min after the azan
 
 But u can also choose a specific salah time by typing it (fajr,sunrise,asr,maghrib,isha)
+
+You can also choose to print out the time of the next salah by typing "next"

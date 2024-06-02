@@ -4,7 +4,7 @@ import datetime as dt
 from datetime import datetime
 import time as timeModule
 import sys
-#date = datetime.today()
+
 lat = 30
 longg = 31
 sunrise = True
@@ -74,7 +74,7 @@ def allSalahTimes():
 	tomorrow = today + dt.timedelta(days = 1)
 	todayTimes = getTimeArr(today)
 	nextFajr = getTimeArr(tomorrow)['fajr']
-	now = datetime.now()
+	# now = datetime.now()
 	prayers = {}
 	for name,time in todayTimes.items():
 		prayers[name] = time
@@ -122,5 +122,7 @@ else:
 try:
     if sys.argv[1] in ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"]:
         print(times[sys.argv[1]].strftime("%H:%M"))
+    elif sys.argv[1] == "next":
+        print(nearestSalahName)
 except:
-        print(sign + nearestSalahTimeStr)
+    print(sign + nearestSalahTimeStr)
