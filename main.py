@@ -121,7 +121,7 @@ else:
 
 try:
     if sys.argv[1] in ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"]:
-        print(times[sys.argv[1]].strftime("%H:%M"))
+        print(times[sys.argv[1]].strftime("%I:%M"))
     elif sys.argv[1] == "next":
         print(nearestSalahName)
 except:
