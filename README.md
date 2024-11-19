@@ -8,19 +8,15 @@ I have used [Salah tool](https://pypi.org/project/salat/) to calculate the salat
 U have a part in the [main.py](./main.py) at the start which is the constants u want to use
 
 ```py
-lat = float
-long = float
-sunrise = bool
-timeDiff = int
-calcMethod = st.CalculationMethod.<Method u want>
-asrMethod = st.AsrMethod.<Asr method u want>
+python main.py --lat LAT --long LONG --timedelta TIMEDELTA --sunrise PRAYER_NAME
 ```
 lat: latitude
 longg: longitude
 sunrise: if u want to count duha
 timeDiff: time after/before GMT time
-calcMethod: one of these (ISNA,EGYPT,JAFARI,KARACHI,MAKKA)
-asrMethod: one of these (STANDARD,HANAFI)
+prayer_name: the name of the prayer u want to print out it's time
+
+Don't forget that all these are optional arguments you can read the source file to know the default values for them.
 
 # Arguments
 Without any argument it will print out the time remain/after the nearest salah till 20min after the azan
