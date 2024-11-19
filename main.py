@@ -8,7 +8,7 @@ import sys
 lat = 30
 longg = 31
 sunrise = True
-timeDiff = 3 # GMT+x
+timeDiff = 2 # GMT+x
 calcMethod = st.CalculationMethod.EGYPT
 asrMethod = st.AsrMethod.STANDARD
 
