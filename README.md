@@ -10,6 +10,10 @@ U have a part in the [main.py](./main.py) at the start which is the constants u 
 ```py
 python main.py PRAYER_NAME --lat LAT --long LONG --timedelta TIMEDELTA --sunrise 
 ```
+Or if you have installed the ELF file then you can execute it without the python command
+```bash
+salah PRAUER_NAME --lat LAT --long LONG --timedelta TIMEDELTA --sunrise 
+```
 lat: latitude
 longg: longitude
 sunrise: if u want to count duha
