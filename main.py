@@ -4,14 +4,26 @@ import datetime as dt
 from datetime import datetime
 import time as timeModule
 import sys
+import argparse
 
-lat = 30
-longg = 31
-sunrise = True
-timeDiff = 2 # GMT+x
+
+# Arguments handling:
+parser = argparse.ArgumentParser(description="A powerfull tool to get the comming prayer times")
+parser.add_argument("--lat", type=float, help="Latitude of the location", default=30)
+parser.add_argument("--long", type=float, help="Longitude of the location", default=31)
+parser.add_argument("--timedelta", type=int, help="The time difference between the location and the GMT+0 (GMT+xx)",default=2)
+parser.add_argument("--sunrise", action="store_true", help="Considure the sunrise to the comming prayers",default=True)
+parser.add_argument("salah", type=str, help="Prayer name", nargs="?")
+
+args = parser.parse_args()
+
 calcMethod = st.CalculationMethod.EGYPT
 asrMethod = st.AsrMethod.STANDARD
 
+lat = args.lat
+longg = args.long
+timeDiff = args.timedelta
+sunrise = args.sunrise
 
 def getTimeArr(date):
 	# Arguments:
@@ -120,9 +132,11 @@ else:
 	output = sign + nearestSalahTimeStr
 
 try:
-    if sys.argv[1] in ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"]:
-        print(times[sys.argv[1]].strftime("%I:%M"))
-    elif sys.argv[1] == "next":
+    if args.salah in ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"]:
+        print(times[args.salah].strftime("%I:%M"))
+    elif args.salah == "next":
         print(nearestSalahName)
+    else:
+        print(sign + nearestSalahTimeStr)
 except:
     print(sign + nearestSalahTimeStr)
