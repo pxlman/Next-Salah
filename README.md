@@ -21,6 +21,6 @@ Don't forget that all these are optional arguments you can read the source file 
 # Arguments
 Without any argument it will print out the time remain/after the nearest salah till 20min after the azan
 
-But u can also choose a specific salah time by typing it (fajr,sunrise,asr,maghrib,isha)
+But u can also choose a specific salah time by typing it (fajr, sunrise, dhuhr, asr, maghrib, isha)
 
 You can also choose to print out the time of the next salah by typing "next"
