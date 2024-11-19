@@ -8,7 +8,7 @@ I have used [Salah tool](https://pypi.org/project/salat/) to calculate the salat
 U have a part in the [main.py](./main.py) at the start which is the constants u want to use
 
 ```py
-python main.py --lat LAT --long LONG --timedelta TIMEDELTA --sunrise PRAYER_NAME
+python main.py PRAYER_NAME --lat LAT --long LONG --timedelta TIMEDELTA --sunrise 
 ```
 lat: latitude
 longg: longitude
