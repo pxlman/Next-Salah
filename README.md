@@ -18,7 +18,7 @@ You can also use docker to run the program by building the image and running it
 
 ```sh
 docker build -t next-salah .
-docker run --rm next-salah <arguments>
+docker run --rm next-salah [args...]
 ```
 
 # Usage
