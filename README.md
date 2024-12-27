@@ -6,10 +6,19 @@ I have used [Salah tool](https://pypi.org/project/salat/) to calculate the salat
 
 # Installation
 
+## Install the package to your system
 To install the package to your system run this command in the root directory
 
 ```sh
 pip install -e .
+```
+
+## Using Docker
+You can also use docker to run the program by building the image and running it
+
+```sh
+docker build -t next-salah .
+docker run --rm next-salah <arguments>
 ```
 
 # Usage
