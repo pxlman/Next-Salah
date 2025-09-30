@@ -5,13 +5,13 @@ def read_requirements():
         return [line.strip() for line in f if line.strip() and not line.startswith('#')]
 
 setup(
-    name="next-salah",
+    name="nsalah",
     version="0.2.0",
     packages=find_packages(),
     install_requires=read_requirements(),
     entry_points={
         "console_scripts": [
-            "next-salah=src.cli:main",
+            "nsalah=src.cli:main",
         ],
     },
     description="A python program to print out the next salah comming and the remaining time to it.",
