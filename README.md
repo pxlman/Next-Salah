@@ -23,6 +23,12 @@ docker run --rm next-salah [args...]
 
 # Usage
 
+**EASIEST WAY** using nix
+```sh
+nix-shell .
+nsalah --help
+```
+
 If you have installed the package to your system then you can use the following command to get the next salah time
 
 ```sh
