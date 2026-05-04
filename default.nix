@@ -27,6 +27,7 @@ in
     propagatedBuildInputs = with pythonPackages; [
       setuptools
       salat
+      pyyaml
     ];
 
     doCheck = false;
